@@ -12,8 +12,6 @@ import {
   Calendar,
   MapPin,
   GraduationCap,
-  Award,
-  BookOpen,
   Code2,
   Database,
   Layout,
@@ -23,8 +21,6 @@ import {
   Zap,
   Send,
   Phone,
-  Twitter,
-  Heart,
 } from "lucide-react";
 import { ImageWithFallback } from "./components/ImageWithFallback";
 
@@ -67,7 +63,6 @@ function Navigation() {
     { name: "Projects", id: "projects" },
     { name: "About", id: "about" },
     { name: "Experience", id: "experience" },
-    { name: "Education", id: "education" },
     { name: "Skills", id: "skills" },
     { name: "Contact", id: "contact" },
   ];
@@ -799,191 +794,6 @@ function ExperienceSection() {
   );
 }
 
-// Education Section
-function EducationSection() {
-  const education = [
-    {
-      degree: "M.S. in Information Technology and Management",
-      school: "Illinois Institute of Technology",
-      location: "Chicago, IL",
-      period: "Jan 2024 - Dec 2025",
-      gpa: "4.00",
-      status: "In Progress",
-      icon: GraduationCap,
-      color: "from-blue-500 to-cyan-500",
-      courses: [
-        "OOP",
-        "Web Dev",
-        "Project Mgmt",
-        "Testing",
-        "Adv Programming",
-        "IoT Apps",
-      ],
-    },
-    {
-      degree: "Bachelor of Computer Applications",
-      school: "C. B. Patel Computer College",
-      location: "Surat, India",
-      period: "Graduated",
-      gpa: "7.39 / 10",
-      status: "Completed",
-      icon: Award,
-      color: "from-purple-500 to-pink-500",
-      courses: [],
-    },
-  ];
-
-  return (
-    <section id="education" className="py-20 px-4 bg-accent/10">
-      <div className="max-w-6xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <motion.div
-            initial={{ opacity: 0, scale: 0.5 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            className="inline-block mb-4"
-          >
-            <span className="px-4 py-2 bg-primary/10 border border-primary/20 rounded-full text-sm">
-              Academic Background
-            </span>
-          </motion.div>
-          <h2 className="text-4xl sm:text-5xl md:text-6xl mb-4 bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">
-            Education
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Strong foundation in computer science and software engineering
-          </p>
-        </motion.div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
-          {education.map((edu, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 30, scale: 0.95 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.2 }}
-            >
-              <motion.div
-                whileHover={{ y: -8, scale: 1.02 }}
-                className="group h-full"
-              >
-                {/* Gradient glow effect */}
-                <div className={`absolute -inset-0.5 bg-gradient-to-r ${edu.color} rounded-2xl opacity-0 group-hover:opacity-30 blur-xl transition duration-500`} />
-                
-                <div className="relative h-full p-8 bg-card/80 backdrop-blur-sm border border-border/50 rounded-2xl hover:border-primary/50 transition-all duration-300 overflow-hidden">
-                  {/* Background pattern */}
-                  <div className="absolute top-0 right-0 w-32 h-32 opacity-5">
-                    <div className={`w-full h-full bg-gradient-to-br ${edu.color} rounded-full blur-2xl`} />
-                  </div>
-
-                  <div className="relative z-10">
-                    {/* Header */}
-                    <div className="flex items-start justify-between mb-6">
-                      <div className={`p-4 rounded-xl bg-gradient-to-br ${edu.color} shadow-lg`}>
-                        <edu.icon className="h-8 w-8 text-white" />
-                      </div>
-                      <span className={`px-3 py-1 bg-gradient-to-r ${edu.color} text-white rounded-full text-xs shadow-lg`}>
-                        {edu.status}
-                      </span>
-                    </div>
-
-                    {/* Degree info */}
-                    <h3 className="text-xl mb-2 group-hover:text-primary transition-colors">
-                      {edu.degree}
-                    </h3>
-                    <p className="text-muted-foreground mb-1">{edu.school}</p>
-                    <p className="text-sm text-muted-foreground mb-6">{edu.location}</p>
-
-                    {/* Stats */}
-                    <div className="grid grid-cols-2 gap-4 mb-6">
-                      <div className="p-3 bg-accent/50 rounded-lg border border-border/50">
-                        <div className="flex items-center gap-2 mb-1">
-                          <Calendar className="h-3.5 w-3.5 text-primary" />
-                          <span className="text-xs text-muted-foreground">Period</span>
-                        </div>
-                        <p className="text-sm">{edu.period}</p>
-                      </div>
-                      <div className="p-3 bg-accent/50 rounded-lg border border-border/50">
-                        <div className="flex items-center gap-2 mb-1">
-                          <Award className="h-3.5 w-3.5 text-primary" />
-                          <span className="text-xs text-muted-foreground">GPA</span>
-                        </div>
-                        <p className={`text-sm bg-gradient-to-r ${edu.color} bg-clip-text text-transparent`}>
-                          {edu.gpa}
-                        </p>
-                      </div>
-                    </div>
-
-                    {/* Coursework */}
-                    {edu.courses.length > 0 && (
-                      <div>
-                        <div className="flex items-center gap-2 mb-3">
-                          <BookOpen className="h-4 w-4 text-primary" />
-                          <h4 className="text-sm">Key Courses</h4>
-                        </div>
-                        <div className="flex flex-wrap gap-2">
-                          {edu.courses.map((course, courseIdx) => (
-                            <motion.span
-                              key={courseIdx}
-                              initial={{ opacity: 0, scale: 0.8 }}
-                              whileInView={{ opacity: 1, scale: 1 }}
-                              viewport={{ once: true }}
-                              transition={{ duration: 0.2, delay: index * 0.2 + courseIdx * 0.05 }}
-                              whileHover={{ scale: 1.05, y: -2 }}
-                              className="px-2.5 py-1 bg-secondary/50 text-xs rounded-full border border-border/50 hover:border-primary/50 hover:bg-primary/10 transition-all cursor-default"
-                            >
-                              {course}
-                            </motion.span>
-                          ))}
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                </div>
-              </motion.div>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* Achievement badge */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="flex justify-center"
-        >
-          {/* <motion.div
-            whileHover={{ scale: 1.05 }}
-            className="group relative"
-          >
-            <div className="absolute -inset-1 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-2xl opacity-50 group-hover:opacity-75 blur transition duration-300" />
-            <div className="relative px-8 py-4 bg-card border border-border/50 rounded-2xl">
-              <div className="flex items-center gap-4">
-                <div className="p-3 bg-gradient-to-br from-yellow-500/20 to-orange-500/20 rounded-full">
-                  <Award className="h-6 w-6 text-yellow-500" />
-                </div>
-                <div className="text-left">
-                  <p className="text-sm text-muted-foreground">Academic Excellence</p>
-                  <p className="bg-gradient-to-r from-yellow-500 to-orange-500 bg-clip-text text-transparent">
-                    Perfect 4.00 GPA
-                  </p>
-                </div>
-              </div>
-            </div>
-          </motion.div> */}
-        </motion.div>
-      </div>
-    </section>
-  );
-}
 
 // Skills Section
 function SkillsSection() {
@@ -1429,31 +1239,6 @@ function ContactSection() {
   );
 }
 
-// Footer Component
-function Footer() {
-  const currentYear = new Date().getFullYear();
-
-  return (
-    <footer className="py-8 px-4 border-t border-border">
-      <div className="max-w-7xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="flex flex-col sm:flex-row items-center justify-between gap-4"
-        >
-          <p className="text-sm text-muted-foreground">
-            © {currentYear} Your Name. All rights reserved.
-          </p>
-          <p className="text-sm text-muted-foreground flex items-center gap-2">
-            Built with <Heart className="h-4 w-4 text-red-500 fill-red-500" /> using React & Tailwind CSS
-          </p>
-        </motion.div>
-      </div>
-    </footer>
-  );
-}
 
 // Main App
 export default function App() {
@@ -1465,11 +1250,9 @@ export default function App() {
         <ProjectsSection />
         <AboutSection />
         <ExperienceSection />
-        {/* <EducationSection /> */}
         <SkillsSection />
         <ContactSection />
       </main>
-      {/* <Footer /> */}
     </div>
   );
 }
