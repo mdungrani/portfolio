@@ -24,6 +24,7 @@ import {
   FileText
 } from "lucide-react";
 import { ImageWithFallback } from "./components/ImageWithFallback";
+import emailjs from 'emailjs-com';
 
 // Toast notification component
 const toast = {
@@ -1260,11 +1261,33 @@ function ContactSection() {
     { icon: Linkedin, href: "https://linkedin.com/in/mansidungrani", label: "LinkedIn" },
   ];
 
+  // const handleSubmit = (e: React.FormEvent) => {
+  //   e.preventDefault();
+  //   toast.success("Message sent successfully! I'll get back to you soon.");
+  //   setFormData({ name: "", email: "", subject: "", message: "" });
+  // };
+
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    toast.success("Message sent successfully! I'll get back to you soon.");
-    setFormData({ name: "", email: "", subject: "", message: "" });
-  };
+  e.preventDefault();
+
+  emailjs
+    .send(
+      'service_o6hc1mc',         
+      'template_wp7evsq',        
+      formData,                  
+      'BHEmLAOeTifa_ES5a'          
+    )
+    .then(
+      (result) => {
+        console.log(result.text);
+        toast.success("Message sent successfully! I'll get back to you soon.");
+        setFormData({ name: "", email: "", subject: "", message: "" });
+      },
+      (error) => {
+        console.error(error.text);
+      }
+    );
+};
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
