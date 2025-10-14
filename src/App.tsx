@@ -21,6 +21,7 @@ import {
   Zap,
   Send,
   Phone,
+  FileText
 } from "lucide-react";
 import { ImageWithFallback } from "./components/ImageWithFallback";
 
@@ -36,7 +37,9 @@ const toast = {
     }, 3000);
   },
 };
-
+ const handleOpenResume = () => {
+    window.open("/Mansi_Dungrani_Resume.pdf", "_blank");
+  };
 // Navigation Component
 function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -67,6 +70,9 @@ function Navigation() {
     { name: "Skills", id: "skills" },
     { name: "Contact", id: "contact" },
   ];
+
+ 
+
 
   return (
     <motion.nav
@@ -234,6 +240,7 @@ function HeroSection() {
               >
                 Get In Touch
               </button>
+             
             </motion.div>
 
             <motion.div
@@ -574,7 +581,17 @@ function AboutSection() {
               </p>
             </div>
 
-            
+          
+              <button
+                onClick={handleOpenResume}
+                className="group relative px-6 py-3 bg-gradient-to-r from-primary to-primary/80 text-primary-foreground rounded-lg overflow-hidden transition-all hover:shadow-lg hover:shadow-primary/50"
+              >
+                <span className="relative z-10 flex items-center gap-2">
+                  <FileText className="mr-3" />
+                  View My Resume
+                </span>
+                <div className="absolute inset-0 bg-gradient-to-r from-primary/80 to-primary opacity-0 group-hover:opacity-100 transition-opacity" />
+              </button>
           </motion.div>
         </div>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-8">
